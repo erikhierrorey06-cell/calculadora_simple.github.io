@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ECalculadora</title>
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="cuerpo">
+        <h1>¡Calculadora!</h1>
+        <input id="pantalla" type="text" style="height: 75px;width: 295px;font-size: 59px;" disabled>
+        <div class="layout">
+            <div class="container">
+                <button type="button" class="numero" id="1">1</button>
+                <button type="button" class="numero" id="2">2</button>
+                <button type="button" class="numero" id="3">3</button>
+                <button type="button" class="op" id="plus">+</button>
+                <button type="button" class="numero" id="4">4</button>
+                <button type="button" class="numero" id="5">5</button>
+                <button type="button" class="numero" id="6">6</button>
+                <button type="button" class="op" id="min">-</button>
+                <button type="button" class="numero" id="7">7</button>
+                <button type="button" class="numero" id="8">8</button>
+                <button type="button" class="numero" id="9">9</button>
+                <button type="button" class="op" id="mult">*</button>
+                <button type="button" class="numero" id="0">0</button>
+                <button type="button" class="numero" id="π">π</button>
+                <button type="button" class="numero" id="e">e</button>
+                <button type="button" class="op" id="div">/</button>
+                <button type="button" class="op" id="op">=</button>
+                <button type="button" class="op" id="clr">CE</button>
+            </div>
+            <div class="historial">
+                <h1 id="msgError" class="ok">Todo correcto!</h1>
+                <h2>Historial</h2>
+                <div id="textHistorial"></div>
+            </div>
+        </div>
+        <script src="./js/js.js"></script>
+    </div>
+</body>
+</html>
