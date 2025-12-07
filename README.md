@@ -1,5 +1,6 @@
 # Calculadora Básica - Modo Predeterminado
-<img width="3067" height="1638" alt="image" src="https://github.com/user-attachments/assets/6459a5cb-def5-49c9-9b31-226e7b271e3c" />
+<img width="3071" height="1636" alt="image" src="https://github.com/user-attachments/assets/d2188f16-7afc-477d-9169-c5a40207eb4f" />
+
 
 Calculadora básica web con **modo oscuro**.
 
