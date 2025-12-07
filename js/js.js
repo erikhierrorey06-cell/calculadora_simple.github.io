@@ -8,12 +8,17 @@ var valor2 = ""; //guardará el valor segundo
 var op = ""; //guardará los operandos (excepto el "=")
 var sol = 0; //guardará la solución
 var EnProceso = false //se encargará de que el usuario no pueda introducir otro operando cuando se ha seleccionado uno
+const btnOsc = document.getElementById("dark"); //botón de modo oscuro
+btnOsc.addEventListener("click", () => {
+    document.body.classList.toggle("oscuro");
+});
+
 botones.forEach(function (boton) { //esta funcion se encarga de concatenar los numeros
     boton.addEventListener("click", function () {
         const valor = boton.textContent;
         if (pantalla.value === "") {
             pantalla.value = valor;
-        } else if (boton.classList.contains("numero")) {
+        } else if (boton.classList.contains("numero") && (!pantalla.value.includes("π") && !pantalla.value.includes("e"))) {
             pantalla.value += valor;
         }
     });
@@ -58,20 +63,21 @@ function calcular() {
     if (error_bol) {
         pantalla.value = "" //resetea la pantalla al dar error
     }
-    traduccion()
+    valor1=traduccion(valor1)
+    valor2=traduccion(valor2)
     if (!error_bol) {
         switch (op) {
             case "+":
                 sol = Number(valor1) + Number(valor2)
-                pantalla.value = sol
+                pantalla.value = sol.toFixed(4)
                 break;
             case "-":
                 sol = Number(valor1) - Number(valor2)
-                pantalla.value = sol
+                pantalla.value = sol.toFixed(4)
                 break;
             case "*":
                 sol = Number(valor1) * Number(valor2)
-                pantalla.value = sol
+                pantalla.value = sol.toFixed(4)
                 break;
             case "/":
                 sol = Number(valor1) / Number(valor2)
@@ -96,25 +102,32 @@ function reinicio() {
     valor1 = ""
     EnProceso = false
 }
-function traduccion() {
-    switch (valor1) { //traducimos los valores de simbolo a numero del valor 1
-        case "π":
-            valor1 = "3.1415"
-            break;
-        case "e":
-            valor1 = "2.7182"
-            break;
+function traduccion(destino) { //continuar con esto!!! en proceso
+    local = 0
+    simbolo=0
+    special=false
+    if(destino.includes("π")){
+        simbolo = 3.1415
+        special=true
+        destino=destino.replace("π","")
+    }else if (destino.includes("e")){
+        simbolo = 2.7182
+        special=true
+        destino=destino.replace("e","")
     }
-    switch (valor2) {  //traducimos los valores de simbolo a numero del valor 2
-        case "π":
-            valor2 = "3.1415"
-            break;
-        case "e":
-            valor2 = "2.7182"
-            break;
+    if(destino===""){
+        return simbolo
     }
+    if(special===true){ //con la booleana nos aseguramos que solo entren si han habido simbolo
+    //traducimos los valores de simbolo a numero del valor 1
+        local = Number(destino) * simbolo
+        destino = "" + local.toFixed(4)
 
 }
+    return destino
+}
+
+
 function mistake(mensaje) {
     error.textContent = "¡Error! Valores reiniciados";
     error.classList.add("mal"); //no ponemos toggle ya que si ya estaba mal y salta otra vez el toggle a clase mal le quita la clase mal
@@ -126,6 +139,7 @@ function mistake(mensaje) {
     nuevoP.textContent = mensaje;
     nuevoP.style.color = "red";
     ContError.appendChild(nuevoP);
+    ContError.scrollTop = ContError.scrollHeight; //para que baje automaticamente
 
 
 }
