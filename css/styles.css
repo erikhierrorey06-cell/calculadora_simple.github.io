@@ -13,7 +13,15 @@ button {
     height: 50px;
     font-size: 25px;
     border-radius: 10px;
-    background: linear-gradient(90deg, #bdffbf, #ffe1d1, #f4b3ff, #bdf5ff);
+     background: linear-gradient(135deg, #ffffff, #f2f2f2, #e6e6e6, #ffffff);
+}
+button:hover {
+    transform: scale(1.1);  /* se agranda un 10% */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* sombra sutil */
+}
+button:active {
+    transform: scale(0.95); /* se encoge un poco */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
 }
 
 .container {
@@ -46,7 +54,14 @@ button {
     overflow-y: auto;
     background: radial-gradient(90deg, #ffffff, #adecff);
 }
-
+#textHistorial p {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;  
+    padding: 5px 10px;    
+    margin: 5px 0;      
+    color: #000;           
+    backdrop-filter: blur(2px); /*desenfoque detrás del fondo*/
+}
 .ok {
     font-size: 32px;
     color: green;
@@ -78,4 +93,46 @@ button {
     background-color: rgb(252, 252, 252);
     border-radius: 20px;
     border: 3px solid #adecff;
+}
+
+/*modo oscuro*/
+body.oscuro {
+    background: linear-gradient(180deg, #4e4b4b 20%, #636363 33%, #4c4a4a 50%);
+}
+
+body.oscuro button {
+    color:white;
+    background: linear-gradient(135deg, #2c2c2c, #3a3a3a, #4b4b4b, #2c2c2c);
+}
+body.oscuro button:hover {
+    box-shadow: 0 4px 8px rgba(253, 252, 252, 0.685);
+}
+body.oscuro button:active {
+    box-shadow: 0 2px 4px rgba(253, 252, 252, 0.685);
+}
+body.oscuro .container {
+    background: linear-gradient(90deg, #4b4b4b, #2f2f2f);
+    border: 1px solid white;
+}
+
+body.oscuro .historial,
+body.oscuro #textHistorial {
+    /*cambiamos color txt*/
+    background: linear-gradient(90deg, #3b3b3b, #1e1e1e);
+    color: white;
+}
+
+body.oscuro #textHistorial::-webkit-scrollbar-track {
+    background: #2c2d2e;
+    ;
+}
+
+body.oscuro #textHistorial::-webkit-scrollbar-thumb {
+    background-color: rgb(26, 24, 24);
+    border-radius: 20px;
+    border: 3px solid #2c2d2e;
+}
+body.oscuro input{
+    color:white;
+    background-color: #3b3b3b;
 }
